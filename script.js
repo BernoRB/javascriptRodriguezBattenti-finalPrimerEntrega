@@ -3,7 +3,7 @@
 
     -En esta primer versión las entradas y salidas se manejan completamente por prompts y alerts.
     -Tengo el proyecto en un estado más avanzado pero lo reduje al punto de utilizar sólo los contenidos vistos hasta el momento en las clases y utilizando de parámetro las rúbricas.
-    -Entiendo que el HTML no es evaluado en esta instancia por lo que le puse una versión simplificada del "index.html", con un form que no hace nada. En la entrega final esta será una de varias páginas html.
+    -Entiendo que el HTML no es evaluado en esta instancia por lo que le puse una versión simplificada del "index.html", con un form que no hace nada. En la entrega final este index será una de varias páginas html.
     -Un punto central del simulador, que será un juego de tipo memotest, necesita sí o sí de contenidos que aún no vimos por lo que en esta entrega es reemplazado por otra cosa más simple.
 */
 
@@ -23,7 +23,7 @@ class Productos {
 
     // Muestra el nombre y descripción del producto
     mostrar() {
-        alert(`¡Te muestro ahora los productos que ofrecemos!\n\n${this.nombre}: ${this.descripcion}`)
+        alert(`¡Te muestro ahora los productos que ofrecemos! \n\n(${this.id} de ${Object.keys(this).length - 1}) ${this.nombre}: ${this.descripcion}`)
     }
 
     // Calcula el precio final en función del descuento ganado
@@ -42,14 +42,12 @@ let producto3 = new Productos(3, "Telefonia", "Servicio de red movil con la mayo
 let listaProductos = []
 listaProductos.push(producto1, producto2, producto3)
 
-
-
 function iniciaSimulador() {
     //Pedimos nombre
     let nombre = pidoDatos(textoNombre)
 
     //Pedimos mail y lo validamos (pedimos hasta que ingrese uno válido)
-    do{
+    do {
         mail = pidoDatos(textoMail)
     } while (!validoMail(mail))
 
@@ -76,9 +74,9 @@ function pidoDatos(texto) {
 // Simple validador usando expresiones regulares 
 function validoMail(mail) {
     const re =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(mail).toLowerCase());
-  }
+}
 
 // En la versión final el juego será un memotest
 // En función de los aciertos y el tiempo tardado será el descuento obtenido
